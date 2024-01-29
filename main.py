@@ -1,4 +1,4 @@
-import sys, lzma, tarfile, pyAesCrypt, datetime, tempfile, os
+import sys, lzma, tarfile, pyAesCrypt, datetime, tempfile, os, dotenv
 from minio import Minio
 
 def compress(folder_name: str) -> None:
@@ -39,5 +39,6 @@ def main() -> None:
 
 if __name__ == "__main__":
     folder: str = sys.argv[1]
+    dotenv.load_dotenv()
     current_date = datetime.datetime.now().strftime("%Y-%m-%d")
     main()
