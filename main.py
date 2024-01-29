@@ -21,7 +21,7 @@ def upload(backedupFolder: str, filename: str) -> None:
         secret_key=os.getenv("S3_SECRET_KEY"),
         secure=True
     )
-    bucket_name = backedupFolder + "-backup"
+    bucket_name = backedupFolder.split("/")[-1] + "-backup"
     found = client.bucket_exists(bucket_name)
     if not found:
         client.make_bucket(bucket_name)
